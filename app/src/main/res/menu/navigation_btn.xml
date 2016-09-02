@@ -6,9 +6,9 @@
         android:title="item1"
         app:nb_tabActiveResId="@drawable/doc_active"
         app:nb_tabInActiveResId="@drawable/doc_inactive"
-        app:nb_insetLeft="24dp"
+        app:nb_insetLeft="28dp"
         app:nb_insetTop="14dp"
-        app:nb_insetRight="24dp"
+        app:nb_insetRight="28dp"
         app:nb_insetBottom="14dp"
         />
     <item

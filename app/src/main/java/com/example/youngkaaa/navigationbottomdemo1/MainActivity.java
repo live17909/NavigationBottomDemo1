@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(int index, View view) {
                 Log.d("kklog", "######onTabSelected index=====>" + index + "######");
-                Toast.makeText(MainActivity.this, index + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Selected "+index, Toast.LENGTH_SHORT).show();
             }
         });
         Log.d("kklog", "######onTabSelected getSelectedIndex=====>" + navigationBottom.getSelectedIndex() + "######");
@@ -49,10 +49,8 @@ public class MainActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_MOVE:
                         int deltaY=y-lastY;
                         if(deltaY>=0){  //down
-                            Log.d("kklog","Main deltaY>=0");
                             navigationBottom.show();
                         }else{  //up
-                            Log.d("kklog","Main deltaY<0");
                             navigationBottom.hide();
 
                         }

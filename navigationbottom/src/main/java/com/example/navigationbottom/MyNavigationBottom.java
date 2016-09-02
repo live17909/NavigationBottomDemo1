@@ -33,6 +33,7 @@ public class MyNavigationBottom extends LinearLayout implements View.OnClickList
     public static final int LEVEL_ACTIVE = 2;
 
     public static final int DEFAULT_SCROLL_DURATION = 500;
+    private static final int DEFAULT_SELECTED_INDEX=0;
 
     private List<BottomMenuItem> items;
     private List<ImageView> bottomTabs = new ArrayList<>();
@@ -94,7 +95,7 @@ public class MyNavigationBottom extends LinearLayout implements View.OnClickList
         setOrientation(HORIZONTAL);
 
         TypedArray array = context.obtainStyledAttributes(set, R.styleable.MyNavigationBottom);
-        defaultSelectedIndex = array.getInt(R.styleable.MyNavigationBottom_nb_defaultIndex, 0);
+        defaultSelectedIndex = array.getInt(R.styleable.MyNavigationBottom_nb_defaultIndex, DEFAULT_SELECTED_INDEX);
         scrollDuration = array.getInt(R.styleable.MyNavigationBottom_nb_scrollDuration, DEFAULT_SCROLL_DURATION);
 
         int resId = array.getResourceId(R.styleable.MyNavigationBottom_nb_xmlResource, 0);

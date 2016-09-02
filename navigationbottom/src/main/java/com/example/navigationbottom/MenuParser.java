@@ -79,7 +79,6 @@ public class MenuParser {
 
     private static void readItem(Context context,AttributeSet set){
         TypedArray array=context.obtainStyledAttributes(set,R.styleable.MyNavigationBottomItem);
-        int id=array.getInt(R.styleable.MyNavigationBottomItem_android_id,-1);
         String title=array.getString(R.styleable.MyNavigationBottomItem_android_title);
         int resIdInactive=array.getResourceId(R.styleable.MyNavigationBottomItem_nb_tabInActiveResId,0);
         int resIdActive=array.getResourceId(R.styleable.MyNavigationBottomItem_nb_tabActiveResId,0);
@@ -98,7 +97,6 @@ public class MenuParser {
 
 
         item=new BottomMenuItem();
-        item.setId(id);
         item.setTitle(title);
         item.setActiveResId(resIdActive);
         item.setInActiveResId(resIdInactive);

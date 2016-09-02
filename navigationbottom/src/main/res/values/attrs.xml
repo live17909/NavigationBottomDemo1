@@ -7,7 +7,6 @@
     </declare-styleable>
 
     <declare-styleable name="MyNavigationBottomItem">
-        <attr name="android:id"/>
         <attr name="android:title"/>
         <attr name="nb_tabInActiveResId" format="reference"/>
         <attr name="nb_tabActiveResId" format="reference"/>

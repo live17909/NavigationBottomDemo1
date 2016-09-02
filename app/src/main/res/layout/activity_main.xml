@@ -9,7 +9,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#aeaaaa">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -19,9 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/bottomBg"
+        android:background="@color/colorAccent"
         app:nb_xmlResource="@menu/navigation_btn"
-        app:nb_defaultIndex="3"
+        app:nb_scrollDuration="300"
         app:elevation="8dp">
     </com.example.navigationbottom.MyNavigationBottom>
 </RelativeLayout>
