@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.youngkaaa.navigationbottomdemo1.MainActivity">
+
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Hello World!" />-->
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <com.example.youngkaaa.navigationbottomdemo1.MyNavigationBottom
+        android:id="@+id/navigationBtn1"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bottomBg"
+        app:nb_xmlResource="@menu/navigation_btn"
+        app:nb_defaultIndex="3"
+        app:elevation="8dp">
+    </com.example.youngkaaa.navigationbottomdemo1.MyNavigationBottom>
+</RelativeLayout>

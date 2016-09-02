@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="item1"
+        app:nb_tabActiveResId="@drawable/doc_active"
+        app:nb_tabInActiveResId="@drawable/doc_inactive" />
+s
+    <item
+        android:title="item2"
+        app:nb_tabActiveResId="@drawable/find_active"
+        app:nb_tabInActiveResId="@drawable/find_inactive" />
+
+    <item
+        android:title="item3"
+        app:nb_tabActiveResId="@drawable/notification_active"
+        app:nb_tabInActiveResId="@drawable/notification_inactive" />
+
+    <item
+        android:title="item4"
+        app:nb_tabActiveResId="@drawable/message_active"
+        app:nb_tabInActiveResId="@drawable/message_inactive" />
+
+    <item
+        android:title="item5"
+        app:nb_tabActiveResId="@drawable/more_active"
+        app:nb_tabInActiveResId="@drawable/more_inactive" />
+
+</menu>

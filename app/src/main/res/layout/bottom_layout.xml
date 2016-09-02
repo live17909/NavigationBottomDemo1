@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="#27a158">
+
+    <ImageView
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:src="@drawable/jay_fantexi"
+        android:layout_gravity="center_vertical"/>
+
+    <ImageView
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:src="@drawable/jay_fantexi"
+        android:layout_marginLeft="66dp"
+        android:layout_gravity="center_vertical"/>
+
+</FrameLayout>
