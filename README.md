@@ -48,20 +48,20 @@
              
              app:nb_tabInActiveResId : 为当前item(即当前tab）设置当其未选中时的图片id。
              
-             app:nb_insetLeft : 设置当前Item(即当前ab)的背景图片距离左边缘的距离，具体下面有图解
+             app:nb_insetLeft : 设置当前Item(即当前tab)的背景图片距离左边缘的距离，具体下面有图解
              
-             app:nb_insetTop : 设置当前Item(即当前ab)的背景图片距离上边缘的距离，具体下面有图解
+             app:nb_insetTop : 设置当前Item(即当前tab)的背景图片距离上边缘的距离，具体下面有图解
              
-             app:nb_insetRight ： 设置当前Item(即当前ab)的背景图片距离右边缘的距离，具体下面有图解
+             app:nb_insetRight ： 设置当前Item(即当前tab)的背景图片距离右边缘的距离，具体下面有图解
              
-             app:nb_insetBottom ： 设置当前Item(即当前ab)的背景图片距离下边缘的距离，具体下面有图解
+             app:nb_insetBottom ： 设置当前Item(即当前tab)的背景图片距离下边缘的距离，具体下面有图解
              
 #####            注意：
              1) 默认内部的insetLeft,insetRight,insetTop,insetBottom 默认是12dp。当你设置了app:nb_insetLeft 、  app:nb_insetTop 、app:nb_insetRight、nb_insetBottom
              app:nb_insetBottom 时，便以设置的属性大小为准，当没有设置时，以默认值12dp为准。
              这样的话，当你设置了图标之后，发现有个别图标和其他不同大小，可以通过以上四个属性来微调指定图标大小，以达到整体一致的目的。
              
-             2) 当你设置的insetLeft和insetRight之和大于一个Tab的宽度时，会抛出异常：IllegalArgumentException （xml attribute of "nb_insetTop" or "nb_insetBottom" is too large!）
+             2) 当你设置的insetLeft和insetRight之和大于一个Tab的宽度时，会抛出异常：IllegalArgumentException （xml attribute of "app:insetLeft" or "app:insetRight" is too large!）
              
              3） insetTop和insetBottom同理
              
