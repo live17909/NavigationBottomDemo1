@@ -1,4 +1,4 @@
-package com.example.youngkaaa.navigationbottomdemo1;
+package com.example.navigationbottom;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -198,7 +198,7 @@ public class MyNavigationBottom extends LinearLayout implements View.OnClickList
             insetRight=items.get(i).getInsetRight();
             insetBottom=items.get(i).getInsetBottom();
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int) perWidth, (int) perHeight);
+            LayoutParams params = new LayoutParams((int) perWidth, (int) perHeight);
             params.width = (int) perWidth;
             params.height = (int) perHeight;
             params.gravity = Gravity.CENTER;

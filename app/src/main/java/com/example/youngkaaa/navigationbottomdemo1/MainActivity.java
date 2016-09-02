@@ -2,22 +2,35 @@ package com.example.youngkaaa.navigationbottomdemo1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.navigationbottom.MyNavigationBottom;
+import com.example.navigationbottom.OnTabSelectListener;
+
 public class MainActivity extends AppCompatActivity {
-    private ImageView imageView;
-    private boolean isTwo = false;
     private MyNavigationBottom navigationBottom;
     private boolean isShow = true;
+    private RecyclerView recyclerView;
+    private MyRecycelerAdapter recycelerAdapter;
+    private int lastX;
+    private int lastY;
+    private int x;
+    private int y;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        recyclerView= (RecyclerView) findViewById(R.id.recyclerViewMain);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recycelerAdapter=new MyRecycelerAdapter();
+        recyclerView.setAdapter(recycelerAdapter);
         navigationBottom = (MyNavigationBottom) findViewById(R.id.navigationBtn1);
         navigationBottom.setOnTabListener(new OnTabSelectListener() {
             @Override
@@ -27,18 +40,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Log.d("kklog", "######onTabSelected getSelectedIndex=====>" + navigationBottom.getSelectedIndex() + "######");
-        findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
+        recyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
-                if (isShow) {
-                    navigationBottom.hide();
-                    isShow=false;
-                }else{
-                    navigationBottom.show();
-                    isShow=true;
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                x= (int) motionEvent.getX();
+                y= (int) motionEvent.getY();
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_MOVE:
+                        int deltaY=y-lastY;
+                        if(deltaY>=0){  //down
+                            Log.d("kklog","Main deltaY>=0");
+                            navigationBottom.show();
+                        }else{  //up
+                            Log.d("kklog","Main deltaY<0");
+                            navigationBottom.hide();
+
+                        }
+                        break;
                 }
-                Toast.makeText(MainActivity.this, "hide!!!", Toast.LENGTH_SHORT).show();
+                lastX=x;
+                lastY=y;
+                return false;
             }
         });
+
     }
 }

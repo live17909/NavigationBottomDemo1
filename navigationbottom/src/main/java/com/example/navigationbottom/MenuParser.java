@@ -1,4 +1,4 @@
-package com.example.youngkaaa.navigationbottomdemo1;
+package com.example.navigationbottom;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -6,7 +6,6 @@ import android.content.res.XmlResourceParser;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Xml;
-import android.view.InflateException;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

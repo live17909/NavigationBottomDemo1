@@ -1,4 +1,4 @@
-package com.example.youngkaaa.navigationbottomdemo1;
+package com.example.navigationbottom;
 
 import android.view.View;
 

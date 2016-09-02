@@ -6,19 +6,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.youngkaaa.navigationbottomdemo1.MainActivity">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/imageView"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Hello World!" />-->
-
-    <Button
-        android:id="@+id/btn1"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 
-    <com.example.youngkaaa.navigationbottomdemo1.MyNavigationBottom
+    <com.example.navigationbottom.MyNavigationBottom
         android:id="@+id/navigationBtn1"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -27,5 +23,5 @@
         app:nb_xmlResource="@menu/navigation_btn"
         app:nb_defaultIndex="3"
         app:elevation="8dp">
-    </com.example.youngkaaa.navigationbottomdemo1.MyNavigationBottom>
+    </com.example.navigationbottom.MyNavigationBottom>
 </RelativeLayout>

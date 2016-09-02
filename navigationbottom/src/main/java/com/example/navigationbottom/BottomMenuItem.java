@@ -1,4 +1,4 @@
-package com.example.youngkaaa.navigationbottomdemo1;
+package com.example.navigationbottom;
 
 /**
  * Created by : youngkaaa on 2016/8/31.
