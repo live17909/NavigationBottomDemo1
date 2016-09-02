@@ -84,11 +84,29 @@ public class MenuParser {
         String title=array.getString(R.styleable.MyNavigationBottomItem_android_title);
         int resIdInactive=array.getResourceId(R.styleable.MyNavigationBottomItem_nb_tabInActiveResId,0);
         int resIdActive=array.getResourceId(R.styleable.MyNavigationBottomItem_nb_tabActiveResId,0);
-        Log.d("kklog","readItem() id==>"+id);
-        Log.d("kklog","readItem() title==>"+title);
-        Log.d("kklog","readItem() resIdInactive==>"+resIdInactive);
-        Log.d("kklog","readItem() resIdActive==>"+resIdActive);
-        item=new BottomMenuItem(title,resIdInactive,resIdActive);
+        float insetLeft = array.getDimension(R.styleable.MyNavigationBottomItem_nb_insetLeft, 0f);
+        Log.d("kklog", "inits() insetLeft==>" + insetLeft);
+        float insetTop = array.getDimension(R.styleable.MyNavigationBottomItem_nb_insetTop, 0);
+        float insetRight = array.getDimension(R.styleable.MyNavigationBottomItem_nb_insetRight, 0);
+        float insetBottom = array.getDimension(R.styleable.MyNavigationBottomItem_nb_insetBottom, 0);
+        Log.d("kklog","readItem() insetLeft==>"+insetLeft);
+        Log.d("kklog","readItem() insetTop==>"+insetTop);
+        Log.d("kklog","readItem() insetRight==>"+insetRight);
+        Log.d("kklog","readItem() insetBottom==>"+insetBottom);
+
+
+
+
+
+        item=new BottomMenuItem();
+        item.setId(id);
+        item.setTitle(title);
+        item.setActiveResId(resIdActive);
+        item.setInActiveResId(resIdInactive);
+        item.setInsetLeft(insetLeft);
+        item.setInsetTop(insetTop);
+        item.setInsetRight(insetRight);
+        item.setInsetBottom(insetBottom);
         array.recycle();
     }
 

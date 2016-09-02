@@ -23,33 +23,33 @@ import java.util.List;
  */
 public class MyNavigationBottom extends LinearLayout implements View.OnClickListener {
     private static float BOTTOM_HEIGHT_VAL;
-    private static int BOTTOM_TAB_INSET_TOP = 12; //12dp
-    private static int BOTTOM_TAB_INSET_LEFT = 12; //12dp
-    private static int BOTTOM_TAB_INSET_RIGHT = 12; //12dp
-    private static int BOTTOM_TAB_INSET_BOTTOM = 12; //12dp
-    private static float BOTTOM_TAB_BG_SCALE = 1.1f;
+    public static final int BOTTOM_TAB_INSET_TOP = 12; //12dp
+    public static final int BOTTOM_TAB_INSET_LEFT = 12; //12dp
+    public static final int BOTTOM_TAB_INSET_RIGHT = 12; //12dp
+    public static final int BOTTOM_TAB_INSET_BOTTOM = 12; //12dp
+    public static final float BOTTOM_TAB_BG_SCALE = 1.1f;
 
-    private static int LEVEL_INACTIVE = 1;
-    private static int LEVEL_ACTIVE = 2;
+    public static final int LEVEL_INACTIVE = 1;
+    public static final int LEVEL_ACTIVE = 2;
 
-    private static int DEFAULT_SCROLL_DURATION = 500;
+    public static final int DEFAULT_SCROLL_DURATION = 500;
 
     private List<BottomMenuItem> items;
     private List<ImageView> bottomTabs = new ArrayList<>();
     private List<ImageView> bottomTabsTemp = new ArrayList<>();
 
     private float screenWidth;
-    private float screenHeight;
+    public static float screenHeight;
     private float bottomHeight;
     private float bottomWidth;
     private int bottomTabNum;
     private int bottomBgColor = getContext().getResources().getColor(R.color.bottomBg);
-    private float perWidth = 0;
-    private float perHeight = 0;
-    private float insetLeft;
-    private float insetTop;
-    private float insetRight;
-    private float insetBottom;
+    public static float perWidth = 0;
+    public static float perHeight = 0;
+//    private float insetLeft;
+//    private float insetTop;
+//    private float insetRight;
+//    private float insetBottom;
     private int selectedIndex;
     private int defaultSelectedIndex;
     private int lastSelectedIndex;
@@ -98,16 +98,17 @@ public class MyNavigationBottom extends LinearLayout implements View.OnClickList
         scrollDuration = array.getInt(R.styleable.MyNavigationBottom_nb_scrollDuration, DEFAULT_SCROLL_DURATION);
 
         int resId = array.getResourceId(R.styleable.MyNavigationBottom_nb_xmlResource, 0);
-        insetLeft = array.getDimension(R.styleable.MyNavigationBottom_nb_insetLeft, 0f);
-        Log.d("kklog", "inits() insetLeft==>" + insetLeft);
-        insetTop = array.getDimension(R.styleable.MyNavigationBottom_nb_insetTop, 0);
-        insetRight = array.getDimension(R.styleable.MyNavigationBottom_nb_insetRight, 0);
-        insetBottom = array.getDimension(R.styleable.MyNavigationBottom_nb_insetBottom, 0);
+//        insetLeft = array.getDimension(R.styleable.MyNavigationBottom_nb_insetLeft, 0f);
+//        Log.d("kklog", "inits() insetLeft==>" + insetLeft);
+//        insetTop = array.getDimension(R.styleable.MyNavigationBottom_nb_insetTop, 0);
+//        insetRight = array.getDimension(R.styleable.MyNavigationBottom_nb_insetRight, 0);
+//        insetBottom = array.getDimension(R.styleable.MyNavigationBottom_nb_insetBottom, 0);
 
         if (resId == 0) {
             throw new InflateException("MyNavigationBottom must has the attribute of nb_xmlResource");
         }
         array.recycle();
+
         items = MenuParser.inflateMenu(getContext(), resId);
         bottomTabNum = items.size();
         if (bottomTabNum < 3 || bottomTabNum > 5) {
@@ -159,38 +160,52 @@ public class MyNavigationBottom extends LinearLayout implements View.OnClickList
     private void makeTabs() {
         perWidth = bottomWidth / bottomTabNum;
         perHeight = bottomHeight;
-        if (insetTop == 0) {
-            insetTop = (int) MetricUtils.dp2px(getContext(), BOTTOM_TAB_INSET_TOP);
-        }
-        if (insetBottom == 0) {
-            insetBottom = insetTop;
-        }
-        if (insetLeft == 0) {
-            float drawableHeight = perHeight - insetTop - insetBottom;
+//        if (insetTop == 0) {
+//            insetTop = (int) MetricUtils.dp2px(getContext(), BOTTOM_TAB_INSET_TOP);
+//        }
+//        if (insetBottom == 0) {
+//            insetBottom = insetTop;
+//        }
+//        if (insetLeft == 0) {
+//            float drawableHeight = perHeight - insetTop - insetBottom;
+//
+//            float drawableWidth = drawableHeight * BOTTOM_TAB_BG_SCALE;
+//
+//            insetLeft = (int) ((perWidth - drawableWidth) / 2);
+//        }
+//        if (insetRight == 0) {
+//            insetRight = insetLeft;
+//        }
+//        if ((insetLeft + insetRight) >= perWidth) {
+//            throw new IllegalArgumentException("xml attribute of \"nb_insetLeft\" or \"nb_insetRight\" is too large!");
+//        }
+//
+//        if ((insetTop + insetBottom) >= perHeight) {
+//            throw new IllegalArgumentException("xml attribute of \"nb_insetTop\" or \"nb_insetBottom\" is too large!");
+//        }
 
-            float drawableWidth = drawableHeight * BOTTOM_TAB_BG_SCALE;
 
-            insetLeft = (int) ((perWidth - drawableWidth) / 2);
-        }
-        if (insetRight == 0) {
-            insetRight = insetLeft;
-        }
-        if ((insetLeft + insetRight) >= perWidth) {
-            throw new IllegalArgumentException("xml attribute of \"nb_insetLeft\" or \"nb_insetRight\" is too large!");
-        }
-
-        if ((insetTop + insetBottom) >= perHeight) {
-            throw new IllegalArgumentException("xml attribute of \"nb_insetTop\" or \"nb_insetBottom\" is too large!");
-        }
 
         for (int i = 0; i < bottomTabNum; i++) {
+            checkTabInsets(i);
+
+            float insetLeft;
+            float insetTop;
+            float insetRight;
+            float insetBottom;
+            insetLeft=items.get(i).getInsetLeft();
+            insetTop=items.get(i).getInsetTop();
+            insetRight=items.get(i).getInsetRight();
+            insetBottom=items.get(i).getInsetBottom();
+
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int) perWidth, (int) perHeight);
             params.width = (int) perWidth;
             params.height = (int) perHeight;
             params.gravity = Gravity.CENTER;
             final ImageView imageView = bottomTabsTemp.get(i);
+
             imageView.setLayoutParams(params);
-            final Drawable drawable = makeDrawables(i, (int) insetLeft, (int) insetTop, (int) insetRight, (int) insetBottom);
+            final Drawable drawable = makeDrawable(i, (int) insetLeft, (int) insetTop, (int) insetRight, (int) insetBottom);
             imageView.setBackgroundDrawable(drawable);
             bottomTabs.add(imageView);
             final int finalI = i;
@@ -219,6 +234,55 @@ public class MyNavigationBottom extends LinearLayout implements View.OnClickList
         }
     }
 
+    private void checkTabInsets(int i) {
+        float insetLeft;
+        float insetTop;
+        float insetRight;
+        float insetBottom;
+        insetLeft=items.get(i).getInsetLeft();
+        insetTop=items.get(i).getInsetTop();
+        insetRight=items.get(i).getInsetRight();
+        insetBottom=items.get(i).getInsetBottom();
+
+        Log.d("kklog","checkTabInsets1() insetLeft==>"+insetLeft);
+        Log.d("kklog","checkTabInsets1() insetTop==>"+insetTop);
+        Log.d("kklog","checkTabInsets1() insetRight==>"+insetRight);
+        Log.d("kklog","checkTabInsets1() insetBottom==>"+insetBottom);
+
+        if (insetTop == 0) {
+            insetTop = (int) MetricUtils.dp2px(getContext(), BOTTOM_TAB_INSET_TOP);
+        }
+        if (insetBottom == 0) {
+            insetBottom = insetTop;
+        }
+        if (insetLeft == 0) {
+            float drawableHeight = perHeight - insetTop - insetBottom;
+
+            float drawableWidth = drawableHeight * BOTTOM_TAB_BG_SCALE;
+
+            insetLeft = (int) ((perWidth - drawableWidth) / 2);
+        }
+        if (insetRight == 0) {
+            insetRight = insetLeft;
+        }
+        if ((insetLeft + insetRight) >= perWidth) {
+            throw new IllegalArgumentException("xml attribute of \"nb_insetLeft\" or \"nb_insetRight\" is too large!");
+        }
+
+        if ((insetTop + insetBottom) >= perHeight) {
+            throw new IllegalArgumentException("xml attribute of \"nb_insetTop\" or \"nb_insetBottom\" is too large!");
+        }
+        items.get(i).setInsetLeft(insetLeft);
+        items.get(i).setInsetTop(insetTop);
+        items.get(i).setInsetRight(insetRight);
+        items.get(i).setInsetBottom(insetBottom);
+        Log.d("kklog","checkTabInsets2() insetLeft==>"+insetLeft);
+        Log.d("kklog","checkTabInsets2() insetTop==>"+insetTop);
+        Log.d("kklog","checkTabInsets2() insetRight==>"+insetRight);
+        Log.d("kklog","checkTabInsets2() insetBottom==>"+insetBottom);
+
+    }
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
@@ -232,7 +296,7 @@ public class MyNavigationBottom extends LinearLayout implements View.OnClickList
         }
     }
 
-    private Drawable makeDrawables(int i, int insetLeft, int insetTop, int insetRight, int insetBottom) {
+    private Drawable makeDrawable(int i, int insetLeft, int insetTop, int insetRight, int insetBottom) {
         Drawable inActiveDrawable = getContext().getResources().getDrawable(items.get(i).getInActiveResId());
         Drawable activeDrawable = getContext().getResources().getDrawable(items.get(i).getActiveResId());
         InsetDrawable bgDrawableInactive = null;
@@ -253,12 +317,7 @@ public class MyNavigationBottom extends LinearLayout implements View.OnClickList
         return levelListDrawable;
     }
 
-    private Drawable makeDrawable(int resId, int insetLeft, int insetTop, int insetRight, int insetBottom) {
-        Drawable drawable = getContext().getResources().getDrawable(resId);
-        InsetDrawable bgDrawable = new InsetDrawable(drawable, insetLeft, insetTop, insetRight, insetBottom);
 
-        return bgDrawable;
-    }
 
     public void setOnTabListener(OnTabSelectListener listener) {
         if (listener != null) {
