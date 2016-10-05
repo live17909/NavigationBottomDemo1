@@ -1,6 +1,16 @@
 # NavigationBottomDemo1
 模仿知乎的底部导航栏
 
+
+# 加入到你的项目中去
+
+在Module下的build.gradle中，加上下面这句：
+
+```
+compile 'com.github.youngkaaa:navigation-bottom:1.0.0'
+```
+
+
 # 原版如下：
   ![](https://github.com/youngkaaa/NavigationBottomDemo1/raw/master/app/screens/zhihu.png)  
 # 功能介绍：
