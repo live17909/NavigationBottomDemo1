@@ -150,6 +150,9 @@ compile 'com.github.youngkaaa:navigation-bottom:1.0.0'
      
 ![](https://github.com/youngkaaa/NavigationBottomDemo1/raw/master/app/screens/record.gif)   
 
+# 下一步
+
+这段时间将加上Layoutbehavior，让滑动更加舒服。敬请期待！
 
 # 写在最后：
 ##小白，欢迎大神提建议！
